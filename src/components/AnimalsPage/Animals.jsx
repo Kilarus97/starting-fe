@@ -41,7 +41,7 @@ const AnimalsTable = ({ animals, onDelete, triggerRefresh }) => {
                     }}>Izbriši</button>
                   </td>
                   <td>
-                    <button onClick={() => navigate(`/edit-book/${book.id}`)}>Izmeni</button>
+                    <button onClick={() => navigate(`/edit-animal/${animal.id}`)}>Izmeni</button>
                   </td>
                 </>
               )}

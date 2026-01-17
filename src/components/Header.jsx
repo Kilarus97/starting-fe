@@ -15,9 +15,7 @@ const Header = () => {
           <li><Link to="/animals">Animals</Link></li>
           {!isAdmin ? null : (
             <>
-              <li><Link to="/create-book">Add new Book</Link></li>
-              <li><Link to="/volumes">Pretraga tomova</Link></li>
-              <li><Link to="/issues">Pretraga izdanja</Link></li>
+              <li><Link to="/create-animal">Add new Animal</Link></li>
             </>
           )}
 

@@ -6,6 +6,13 @@ export async function getAllAnimals() {
   return response.data;
 }
 
+export async function getAnimalById(id) {
+  const response = await AxiosConfig.get(`/Animal/${id}`);
+  return response.data;
+}
+
+
+
 export async function createAnimal(productData) {
   const response = await AxiosConfig.post("/Animal/", productData);
   return response.data;

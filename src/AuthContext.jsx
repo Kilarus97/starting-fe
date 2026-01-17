@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("token");
       }
     }
-  }, []);
+  }, [localStorage.getItem("token")]);
 
   const login = (token) => {
     localStorage.setItem("token", token);
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     setUser(decoded);
     setIsAuthenticated(true);
 
-    if (decoded.role && decoded.role.includes("ADMINISTRATOR")) {
+    if (decoded.role && decoded.role.includes("Administrator")) {
       setisAdmin(true);
       setRole("Administrator");
     } else {
