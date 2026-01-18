@@ -9,11 +9,14 @@ export default function BooksPage() {
     const [refresh, setRefresh] = useState(0);
 
 
-    useEffect(() => {
+    useEffect(() => { 
         crudService.getAllAnimals()
-          .then(res => setAnimals(res || []))
-          .catch(err => console.error("Greška pri učitavanju zivotinja:", err));
-      }, [refresh]);
+         .then(res => { 
+            setAnimals(res || []); 
+            console.log("Učitane životinje:", res);  
+        }) 
+        .catch(err => console.error("Greška pri učitavanju životinja:", err)); 
+    }, [refresh]);
       
       const fetchBooks = async () => {
         try {

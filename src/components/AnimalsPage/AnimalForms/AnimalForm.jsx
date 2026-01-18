@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "../../../styles/main.scss";
 
-function ContactHookForm({ initialData = {}, onSubmitBook, onCancel }) {
+function ContactHookForm({cages, initialData = {}, onSubmitBook, onCancel }) {
   const {
     register,
     handleSubmit,
@@ -16,20 +16,24 @@ function ContactHookForm({ initialData = {}, onSubmitBook, onCancel }) {
       setValue("name", initialData.name || "");
       setValue("species", initialData.species || "");
       setValue("mass", initialData.mass || "");
+      setValue("cageId", initialData.cage?.id ?? "");
     }
   }, [initialData, setValue]);
 
+
   const onSubmit = (data) => {
-    const book = {
-      id: initialData?.id, // za PUT
+    const animal = {
+      id: initialData?.id,
       name: data.name,
       species: data.species,
       mass: data.mass,
+      cageId: data.cageId ? Number(data.cageId) : null,
     };
   
-    onSubmitBook(book); // ← tvoja funkcija za POST/PUT
+    onSubmitBook(animal);
     reset();
   };
+  
 
   return (
     <form className="formaDodaj" onSubmit={handleSubmit(onSubmit)}>
@@ -68,6 +72,22 @@ function ContactHookForm({ initialData = {}, onSubmitBook, onCancel }) {
             min: { value: 0, message: "Tezina mora biti pozitivna." }, 
             })} />
         {errors.publishedDate && <p className="error">{errors.publishedDate.message}</p>}
+      </label>
+      <br />
+      
+      <label>
+        Cage:
+        <select
+          {...register("cageId")}
+          defaultValue={initialData?.cageId ?? ""}
+        >
+          <option value="">-- Bez kaveza --</option>
+          {cages.map((cage) => (
+            <option key={cage.id} value={cage.id}>
+              {cage.code}
+            </option>
+          ))}
+        </select>
       </label>
       <br />
 

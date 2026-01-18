@@ -11,15 +11,13 @@ export async function getAnimalById(id) {
   return response.data;
 }
 
-
-
 export async function createAnimal(productData) {
   const response = await AxiosConfig.post("/Animal/", productData);
   return response.data;
 }
 
-export async function updateAnimal(id, productData) {
-  const response = await AxiosConfig.put(`/Animal/${id}`, productData);
+export async function updateAnimal(productData) {
+  const response = await AxiosConfig.put("/Animal/", productData);
   return response.data;
 }
 
