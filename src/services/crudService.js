@@ -26,4 +26,7 @@ export async function deleteAnimal(id) {
   return response.data;
 }
 
-
+export async function searchAnimals(searchParams) {
+  const response = await AxiosConfig.post('/Animal/search', searchParams);
+  return response.data;
+}
